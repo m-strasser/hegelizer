@@ -41,3 +41,21 @@ class Dialectic():
 
         tostr = "\n" + heading + body + heading
         return tostr
+
+    def make_graph(self, distance):
+        """Generates a graphviz representation of the dialectic with the given
+        node distance in centimeters."""
+
+        graph = "\n\\begin{{tikzpicture}}[auto, node distance={} cm]\n".format(distance)
+        graph += "{};\n{};\n{};\n".format(
+            self.root.make_node(1),
+            self.path1.make_node(2, 1, "above right"),
+            self.path2.make_node(3, 1, "below right")
+        )
+        graph += "\n\\path[-] (N{}) node (N{})\n(N{}) node (N{});\n".format(
+            1, 2, 1, 3
+        )
+
+        graph += "\\end{tikzpicture}\n"
+
+        return graph

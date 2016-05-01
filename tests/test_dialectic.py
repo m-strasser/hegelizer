@@ -28,3 +28,19 @@ class TestDialectic(TestCase):
         actual = str(self.dialectic)
 
         self.assertEqual(expected, actual)
+
+    def test_graph_representation(self):
+        """Tests the graphviz representation of the dialectic."""
+        expected = """
+\\begin{tikzpicture}[auto, node distance=2 cm]
+\\node[state] (N1) \{Sinnliches Bewusstsein\};
+\\node[state] (N2) [above right of=N1] \{Dieser\};
+\\node[state] (N3) [below right of=N1] \{Dieses\};
+
+\\path[-] (N1) node (N2)
+(N1) node (N3);
+\\end{tikzpicture}
+"""
+        actual = self.dialectic.make_graph(2)
+
+        self.assertEqual(expected, actual)
