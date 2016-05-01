@@ -76,9 +76,30 @@ class Notion():
 
         return tostr
 
-    def make_node(self, number):
+    def make_node(self, number, reference_node = -1, position = None):
         """Returns a graphviz representation of the notion. The number is used to
         give a unique ID to the node in the corresponding graph of the dialectic.
         """
 
-        return "\\node[state] (N1) \{{{}\}}".format(self.name)
+        node =  "\\node[state] (N1) "
+
+        if Notion.valid_position(position) and (reference_node > -1):
+            node += "[{} of=N{}] ".format(position, reference_node)
+
+        node += "\{{{}\}}".format(self.name)
+
+        return node
+
+    @staticmethod
+    def valid_position(position):
+        """Checks if a given string is a valid node position."""
+        valid_positions = ["above", "below", "right", "left",
+                           "above right", "above left",
+                           "below right", "below left",
+                           "right above", "left above",
+                           "right below", "left below"]
+
+        if (position is None) or (position not in valid_positions):
+            return False
+
+        return True
