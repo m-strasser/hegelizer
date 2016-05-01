@@ -21,6 +21,7 @@ tests_require = [
     'ipdb',
     'coveralls',
     'sphinx',
+    'graphviz',
 ]
 
 setup(
