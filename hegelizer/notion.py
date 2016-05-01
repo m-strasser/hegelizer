@@ -73,3 +73,10 @@ class Notion():
         tostr = "\n" + heading + body + heading
 
         return tostr
+
+    def make_node(self, number):
+        """Returns a graphviz representation of the notion. The number is used to
+        give a unique ID to the node in the corresponding graph of the dialectic.
+        """
+
+        return "\\node[state] (N1) \{{{}\}}".format(self.name)

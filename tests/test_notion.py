@@ -49,7 +49,6 @@ class TestNotion(TestCase):
     def test_make_node(self):
         """Tests the graph representation of the notion."""
         expected = "\\node[state] (N1) \{Gegenstand\}"
-        actual = self.notion.makeNode()
+        actual = self.notion.make_node(1)
 
-        self.fail("Notion needs to be implemented")
         self.assertEqual(expected, actual)
