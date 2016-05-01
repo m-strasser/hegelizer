@@ -4,6 +4,7 @@
 from tests.base import TestCase
 from hegelizer.dialectic import Dialectic
 from hegelizer.notion import Notion
+import pdb
 
 
 class TestDialectic(TestCase):
@@ -29,8 +30,8 @@ class TestDialectic(TestCase):
 
         self.assertEqual(expected, actual)
 
-    def test_graph_representation(self):
-        """Tests the graphviz representation of the dialectic."""
+    def test_markdown_graph_representation(self):
+        """Tests the markdown tikz representation of the dialectic."""
         expected = """
 \\begin{tikzpicture}[auto, node distance=2 cm]
 \\node[state] (N1) \{Sinnliches Bewusstsein\};
@@ -41,6 +42,16 @@ class TestDialectic(TestCase):
 (N1) node (N3);
 \\end{tikzpicture}
 """
-        actual = self.dialectic.make_graph(2)
+        actual = self.dialectic.make_markdown_graph(2)
+
+        self.assertEqual(expected, actual)
+
+    def test_graphviz_representation(self):
+        """Tests the graphviz representation of the dialectic."""
+        pdb.set_trace()
+        expected = 'graph {\n\t"Sinnliches Bewusstsein"\n\tDieser\n\t'
+        expected += 'Dieses\n\t\t"Sinnliches Bewusstsein" -- Dieser\n\t\t'
+        expected += '"Sinnliches Bewusstsein" -- Dieses\n}'
+        actual = self.dialectic.make_graphviz_graph().source
 
         self.assertEqual(expected, actual)

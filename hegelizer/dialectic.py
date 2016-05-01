@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
+import graphviz as gv
 
 
 class Dialectic():
@@ -42,9 +43,9 @@ class Dialectic():
         tostr = "\n" + heading + body + heading
         return tostr
 
-    def make_graph(self, distance):
-        """Generates a graphviz representation of the dialectic with the given
-        node distance in centimeters."""
+    def make_markdown_graph(self, distance=1):
+        """Generates a markdown tikz representation of the dialectic with the
+        given node distance in centimeters."""
 
         graph = "\n\\begin{{tikzpicture}}[auto, node distance={} cm]\n".format(distance)
         graph += "{};\n{};\n{};\n".format(
@@ -59,3 +60,16 @@ class Dialectic():
         graph += "\\end{tikzpicture}\n"
 
         return graph
+
+    def make_graphviz_graph(self, fileformat='jpeg'):
+        """Creates a graphviz representation of the dialectic in the given file
+        format."""
+        g1 = gv.Graph(format=fileformat)
+        g1.node(self.root.name)
+        g1.node(self.path1.name)
+        g1.node(self.path2.name)
+        g1.edge(self.root.name, self.path1.name)
+        g1.edge(self.root.name, self.path2.name)
+
+        self.graph = g1
+        return self.graph
