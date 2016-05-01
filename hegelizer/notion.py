@@ -81,7 +81,7 @@ class Notion():
         give a unique ID to the node in the corresponding graph of the dialectic.
         """
 
-        node =  "\\node[state] (N1) "
+        node = "\\node[state] (N{}) ".format(number)
 
         if Notion.valid_position(position) and (reference_node > -1):
             node += "[{} of=N{}] ".format(position, reference_node)
