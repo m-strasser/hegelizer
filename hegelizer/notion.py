@@ -1,10 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
 import textwrap
 
 
 class Notion():
     """Representation of a notion (i.e. a thing in a dialectic, not necessarily
     a notion in the hegelian sense)."""
-    def __init__(self, name, hegelian_type, other_names, notes):
+    def __init__(self, name, hegelian_type, other_names, notes=""):
         self.name = name
         self.hegelian_type = hegelian_type
         self.other_names = other_names
