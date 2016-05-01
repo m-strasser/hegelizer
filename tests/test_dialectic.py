@@ -4,7 +4,6 @@
 from tests.base import TestCase
 from hegelizer.dialectic import Dialectic
 from hegelizer.notion import Notion
-import pdb
 
 
 class TestDialectic(TestCase):
@@ -48,7 +47,6 @@ class TestDialectic(TestCase):
 
     def test_graphviz_representation(self):
         """Tests the graphviz representation of the dialectic."""
-        pdb.set_trace()
         expected = 'graph {\n\t"Sinnliches Bewusstsein"\n\tDieser\n\t'
         expected += 'Dieses\n\t\t"Sinnliches Bewusstsein" -- Dieser\n\t\t'
         expected += '"Sinnliches Bewusstsein" -- Dieses\n}'
