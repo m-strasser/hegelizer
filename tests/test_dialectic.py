@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from tests.base import TestCase
-from hegelizer.dialectic import Dialectic
-from hegelizer.notion import Notion
+from hegelizer.model.dialectic import Dialectic
+from hegelizer.model.notion import Notion
 
 
 class TestDialectic(TestCase):

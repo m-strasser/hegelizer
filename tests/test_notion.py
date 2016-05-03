@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from tests.base import TestCase
-from hegelizer.notion import Notion
+from hegelizer.model.notion import Notion
 
 
 class TestNotion(TestCase):
