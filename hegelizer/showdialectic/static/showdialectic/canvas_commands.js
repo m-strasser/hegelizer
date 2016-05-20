@@ -47,6 +47,11 @@ function set_listeners(canvas) {
 	});
 
 	canvas.on("doubleClick", function (params) {
-		add_branch(params.nodes[0]);
+		$("#overlay_menu").css('display', 'inline');
+		current = params.nodes[0];
 	});
+}
+
+function hide_menu() {
+	$("#overlay_menu").css('display', 'none');
 }

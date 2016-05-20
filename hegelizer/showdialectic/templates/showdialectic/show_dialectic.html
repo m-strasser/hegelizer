@@ -19,6 +19,16 @@
 			height: 90%;
 			border: 1px solid lightgray;
 		}
+		#overlay_menu {
+			width: 33.33%;
+			height: 33.33%;
+			top: 33.33%;
+			left: 33.33%;
+			border: 2px solid black;
+			background: lightgray;
+			position: absolute;
+			opacity: 0.6;
+		}
 	</style>
 </head>
 <body>
@@ -31,6 +41,20 @@
 		<button type="button" id="add_branch" onclick="add_branch();">Add branch</button>
 		<button type="button" id="remove_branch" onclick="remove_branch();">Remove branch</button>
 		<button type="button" id="merge_branches" onclick="merge_branch();">Merge branches</button>
+	</div>
+	<div id="overlay_menu" style="display: none">
+		<button type="button" id="add_branch"
+			onclick="call_from_overlay(add_branch, current);">
+			Add branch
+		</button>
+		<button type="button" id="remove_branch"
+			onclick="call_from_overlay(remove_branch, current);">
+			Remove branch
+		</button>
+		<button type="button" id="merge_branches"
+			onclick="call_from_overlay(merge_branch, current);">
+			Merge branches
+		</button>
 	</div>
 
 	<script type="text/javascript">
@@ -70,7 +94,8 @@
 				multiselect: true
 			}
 		}
-		var network = new vis.Network(container, data, options);
+		var canvas = new vis.Network(container, data, options);
+		set_listeners(canvas);
 		var networks = [{
 			"container": container,
 			"data": data,
@@ -79,16 +104,6 @@
 		}];
 		var current = -1;
 		var counter = 3;
-
-
-		network.on("click", function(params) {
-			$("#menu").css('display', 'inline');
-			current = params.nodes[0];
-		});
-
-		network.on("doubleClick", function (params) {
-			add_branch(params.nodes[0]);
-		});
 	</script>
 </body>
 </html>

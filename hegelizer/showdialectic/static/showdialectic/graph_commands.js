@@ -1,38 +1,39 @@
+function call_from_overlay(f, node) {
+	f(node);
+	hide_menu();
+}
+
 function add_branch(node) {
 	add_node(node, 'New1');
 	add_node(node, 'New2');
 
-	network.redraw();
+	canvas.redraw();
 }
 
-function remove_branch() {
-	if(current != -1) {
-		kids = get_kids(current);
+function remove_branch(node) {
+	kids = get_kids(node);
 
-		kids.forEach(function(kid){
-			nodes.remove(kid);
+	kids.forEach(function(kid){
+		nodes.remove(kid);
+	});
+
+	canvas.redraw();
+}
+
+function merge_branch(node) {
+	kids = get_kids(node);
+
+	if(kids.length > 0) {
+		// We have a root node
+		merged_id = add_node(node, 'Merged1', false);
+
+		kids.forEach(function(kid) {
+			edges.add({ from: kid, to: merged_id });
+			edges.add({ from: kid, to: merged_id });
 		});
-
-		network.redraw();
 	}
-}
 
-function merge_branch() {
-	if(current != -1) {
-		kids = get_kids(current);
-
-		if(kids.length > 0) {
-			// We have a root node
-			merged_id = add_node(current, 'Merged1', false);
-
-			kids.forEach(function(kid) {
-				edges.add({ from: kid, to: merged_id });
-				edges.add({ from: kid, to: merged_id });
-			});
-		}
-
-		network.redraw();
-	}
+	canvas.redraw();
 }
 
 function add_node(root_id, label_txt, add_edge=true) {
@@ -48,7 +49,7 @@ function add_node(root_id, label_txt, add_edge=true) {
 }
 
 function get_kids(id) {
-	var edge_ids = network.getConnectedEdges(id);
+	var edge_ids = canvas.getConnectedEdges(id);
 	var outgoing = [];
 	var edge;
 
