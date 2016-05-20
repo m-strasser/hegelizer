@@ -44,10 +44,12 @@ function set_listeners(canvas) {
 	canvas.on("click", function(params) {
 		$("#menu").css('display', 'inline');
 		current = params.nodes[0];
+		if(overlay_menu_visible) hide_menu();
 	});
 
 	canvas.on("doubleClick", function (params) {
 		$("#overlay_menu").css('display', 'inline');
+		overlay_menu_visible = true;
 		current = params.nodes[0];
 	});
 }

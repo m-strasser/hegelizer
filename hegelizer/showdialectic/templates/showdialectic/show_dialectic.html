@@ -58,14 +58,29 @@
 	</div>
 
 	<script type="text/javascript">
+		var overlay_menu_visible = false;
 		var nodes = new vis.DataSet([
 			{
 				id: 1,
 				label: 'Sinnliche Gewissheit',
 				shape: 'box',
+				merged: false,
+				split: true
 			},
-			{id: 2, label: 'Dieser', shape: 'box'},
-			{id: 3, label: 'Dieses', shape: 'box'},
+			{
+				id: 2,
+				label: 'Dieser',
+				shape: 'box',
+				merged: false,
+				split: false,
+			},
+			{
+				id: 3,
+				label: 'Dieses',
+				shape: 'box',
+				merged: false,
+				split: false
+			},
 		]);
 
 		var edges = new vis.DataSet([
