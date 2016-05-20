@@ -95,6 +95,7 @@ function add_node(root_id, label_txt, add_edge=true) {
 		shape: 'box',
 		merged: false,
 		split: false
+		synonyms: [],
 	});
 
 	if(add_edge)

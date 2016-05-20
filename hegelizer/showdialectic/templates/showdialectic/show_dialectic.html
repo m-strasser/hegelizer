@@ -20,14 +20,26 @@
 			border: 1px solid lightgray;
 		}
 		#overlay_menu {
-			width: 33.33%;
-			height: 33.33%;
+			max-width: 90%;
+			max-height: 90%;
 			top: 33.33%;
 			left: 33.33%;
 			border: 2px solid black;
+			padding: 1em;
+			margin: 0;
 			background: lightgray;
 			position: absolute;
 			opacity: 0.6;
+			text-align: center;
+		}
+		#overlay_buttons {
+			display: inline-block;
+		}
+		#overlay_text {
+			text-align: left;
+		}
+		#overlay_add_synonym {
+			float: right;
 		}
 	</style>
 </head>
@@ -43,18 +55,29 @@
 		<button type="button" id="merge_branches" onclick="merge_branch();">Merge branches</button>
 	</div>
 	<div id="overlay_menu" style="display: none">
-		<button type="button" id="add_branch"
-			onclick="call_from_overlay(add_branch, current);">
-			Add branch
-		</button>
-		<button type="button" id="remove_branch"
-			onclick="call_from_overlay(remove_branch, current);">
-			Remove branch
-		</button>
-		<button type="button" id="merge_branches"
-			onclick="call_from_overlay(merge_branch, current);">
-			Merge branches
-		</button>
+		<div id="overlay_buttons">
+			<button type="button" id="add_branch"
+				onclick="call_from_overlay(add_branch, current);">
+				Add branch
+			</button>
+			<button type="button" id="remove_branch"
+				onclick="call_from_overlay(remove_branch, current);">
+				Remove branch
+			</button>
+			<button type="button" id="merge_branches"
+				onclick="call_from_overlay(merge_branch, current);">
+				Merge branches
+			</button>
+		</div>
+		<div id="overlay_text">
+			<h3>Node Name</h3>
+			<h4>Synonyms:</h4>
+			<ul>
+				<li>Synonym1</li>
+			</ul>
+			<h4>Description:</h4>
+			<p>This is a node. Ok?</p>
+		</div>
 	</div>
 
 	<script type="text/javascript">
@@ -65,7 +88,8 @@
 				label: 'Sinnliche Gewissheit',
 				shape: 'box',
 				merged: false,
-				split: true
+				split: true,
+				synonyms: []
 			},
 			{
 				id: 2,
@@ -73,13 +97,15 @@
 				shape: 'box',
 				merged: false,
 				split: false,
+				synonyms: []
 			},
 			{
 				id: 3,
 				label: 'Dieses',
 				shape: 'box',
 				merged: false,
-				split: false
+				split: false,
+				synonyms: []
 			},
 		]);
 
