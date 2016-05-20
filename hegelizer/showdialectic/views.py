@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.template import loader
 
 
 def index(request):
-    return HttpResponse("Hello, world!")
+    template = loader.get_template('showdialectic/show_dialectic.html')
+    return HttpResponse(template.render(request))
