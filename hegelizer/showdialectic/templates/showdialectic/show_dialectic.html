@@ -6,6 +6,8 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script type="text/javascript" src="{% static "showdialectic/graph_commands.js" %}">
 	</script>
+	<script type="text/javascript" src="{% static "showdialectic/canvas_commands.js" %}">
+	</script>
 	<link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css"/>
 
 	<style type="text/css">
@@ -85,7 +87,7 @@
 		});
 
 		network.on("doubleClick", function (params) {
-			add_branch(params);
+			add_branch(params.nodes[0]);
 		});
 	</script>
 </body>

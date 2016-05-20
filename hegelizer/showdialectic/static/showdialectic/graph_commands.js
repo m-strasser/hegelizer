@@ -1,36 +1,8 @@
-function add_canvas() {
-	canvas_id = 1;
-	name = 'New canvas';
-	data = {};
+function add_branch(node) {
+	add_node(node, 'New1');
+	add_node(node, 'New2');
 
-	canvas = new vis.Network(container, data, options);
-	networks.push({
-		"container": container,
-		"data": data,
-		"options": options,
-		"name": name
-	});
-
-	$('#canvas_navigation').append('<button type="button" id="canvas_' +
-			canvas_id + '" onclick="select_canvas(' + canvas_id +
-			');">' + name + '</button>');
-}
-
-function select_canvas(id) {
-	container = networks[id]['container'];
-	data = networks[id]['data'];
-	options = networks[id]['options'];
-
-	canvas = new vis.Network(container, data, options);
-}
-
-function add_branch() {
-	if(current != -1) {
-		add_node(current, 'New1');
-		add_node(current, 'New2');
-
-		network.redraw();
-	}
+	network.redraw();
 }
 
 function remove_branch() {
